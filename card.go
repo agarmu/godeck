@@ -14,6 +14,8 @@ const (
 	Joker
 )
 
+var suits = [...]Suit{Spade, Diamond, Club, Heart}
+
 type Rank uint8
 
 const (
@@ -31,6 +33,11 @@ const (
 	Jack
 	Queen
 	King
+)
+
+const (
+	minRank = Ace
+	maxRank = King
 )
 
 type Card struct {

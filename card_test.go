@@ -1,6 +1,9 @@
 package godeck
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
 func ExampleCard() {
 	fmt.Println(Card{rank: Ace, suit: Heart})
@@ -17,4 +20,24 @@ func ExampleCard() {
 	// Nine of Clubs
 	// Joker
 	// Four of Spades
+}
+
+func TestNew(t *testing.T) {
+	cards := New()
+
+	if len(cards) != 13*4 {
+		t.Error("Listlength")
+	}
+}
+func TestSort(t *testing.T) {
+	cards := New()
+	cardsB := New(DefaultSort)
+	if len(cards) != len(cardsB) {
+		t.Error("Listlength")
+	}
+	for i, c := range cards {
+		if c.rank != cardsB[i].rank || c.suit != cardsB[i].suit {
+			t.Error("Notmatch")
+		}
+	}
 }
